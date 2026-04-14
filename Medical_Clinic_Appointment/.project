@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/clinic_logo.png</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Documents/pomodoro.py/clinic_logo.png</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
