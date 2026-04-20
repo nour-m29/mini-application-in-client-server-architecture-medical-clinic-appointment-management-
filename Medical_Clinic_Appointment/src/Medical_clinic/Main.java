@@ -7,10 +7,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main implements ActionListener {
-
+    
     JButton patient_btn;
     JButton doctor_btn;
     JButton appointment_btn;
+    
+    // colors
+    Color btnColor = new Color(0, 150, 136);
+    Color blue = new Color(245,248,250);
+    Color light_blue = new Color(232,245,242);
+    //Color btnColor = new Color(222, 252, 142);
+    //Color blue = new Color(15, 64, 143);
+    //Color light_blue = new Color(201, 232, 255);
 
     public Main() {
         // frame
@@ -20,11 +28,7 @@ public class Main implements ActionListener {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
 
-        // colors
-        Color btnColor = new Color(222, 252, 142);
-        Color blue = new Color(15, 64, 143);
-        Color light_blue = new Color(201, 232, 255);
-
+        
         // panel
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -32,13 +36,13 @@ public class Main implements ActionListener {
         window.setContentPane(panel);
 
         // Icon
-        ImageIcon icon = new ImageIcon("icon.jpg");
+        ImageIcon icon = new ImageIcon("clinic.png");
         window.setIconImage(icon.getImage());
 
         // Title
         JLabel label = new JLabel("Medical Clinic Appointment Management");
         label.setFont(new Font("SansSerif", Font.BOLD, 28));
-        label.setForeground(blue);
+        label.setForeground(new Color(0, 150, 136));
         label.setBounds(70, 30, 600, 40);
         panel.add(label);
 
