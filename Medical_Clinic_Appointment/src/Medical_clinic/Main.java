@@ -13,12 +13,10 @@ public class Main implements ActionListener {
     JButton appointment_btn;
     
     // colors
-    Color btnColor = new Color(0, 150, 136);
-    Color blue = new Color(245,248,250);
-    Color light_blue = new Color(232,245,242);
-    //Color btnColor = new Color(222, 252, 142);
-    //Color blue = new Color(15, 64, 143);
-    //Color light_blue = new Color(201, 232, 255);
+    Color tealGreen = new Color(0, 150, 136);
+    Color white = new Color(245,248,250);
+    Color mintColor = new Color(232,245,242);
+    
 
     public Main() {
         // frame
@@ -32,7 +30,7 @@ public class Main implements ActionListener {
         // panel
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(light_blue);
+        panel.setBackground(mintColor);
         window.setContentPane(panel);
 
         // Icon
@@ -50,9 +48,9 @@ public class Main implements ActionListener {
         patient_btn = new JButton("Patients");
         patient_btn.setBounds(200, 100, 300, 55);
         patient_btn.setFocusable(false);
-        patient_btn.setBackground(btnColor);
+        patient_btn.setBackground(tealGreen);
         patient_btn.setFont(new Font("Arial", Font.BOLD, 20));
-        patient_btn.setForeground(blue);
+        patient_btn.setForeground(white);
         patient_btn.addActionListener(this);
         panel.add(patient_btn);
 
@@ -60,9 +58,9 @@ public class Main implements ActionListener {
         doctor_btn = new JButton("Doctors");
         doctor_btn.setBounds(200, 175, 300, 55);
         doctor_btn.setFocusable(false);
-        doctor_btn.setBackground(btnColor);
+        doctor_btn.setBackground(tealGreen);
         doctor_btn.setFont(new Font("Arial", Font.BOLD, 20));
-        doctor_btn.setForeground(blue);
+        doctor_btn.setForeground(white);
         doctor_btn.addActionListener(this);
         panel.add(doctor_btn);
 
@@ -70,9 +68,9 @@ public class Main implements ActionListener {
         appointment_btn = new JButton("Appointments");
         appointment_btn.setBounds(200, 250, 300, 55);
         appointment_btn.setFocusable(false);
-        appointment_btn.setBackground(btnColor);
+        appointment_btn.setBackground(tealGreen);
         appointment_btn.setFont(new Font("Arial", Font.BOLD, 20));
-        appointment_btn.setForeground(blue);
+        appointment_btn.setForeground(white);
         appointment_btn.addActionListener(this);
         panel.add(appointment_btn);
 
@@ -103,11 +101,11 @@ public class Main implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == patient_btn) {
-            new Patient();
+            new PatientFrame();
         } else if (e.getSource() == doctor_btn) {
-            new Doctor();
+            new DoctorFrame();
         } else if (e.getSource() == appointment_btn) {
-            new Appointment();
+            new AppointmentFrame();
         }
     }
 

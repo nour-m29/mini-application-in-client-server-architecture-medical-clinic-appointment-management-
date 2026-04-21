@@ -7,18 +7,18 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+//import javax.swing.text.TableView;
 
-public class Appointment extends JFrame{
+public class AppointmentFrame extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	Color btnColor = new Color(0, 150, 136);
     Color blue = new Color(245,248,250);
     Color light_blue = new Color(232,245,242);
 
-	public Appointment() {
+   // private TableView<Appointment> table;
+	public AppointmentFrame() {
 		
-		//Color btnColor = new Color(222, 252, 142);
-	   //Color bleu = new Color(15, 64, 143);
 	    Color light_bleu = new Color(201, 232, 255);
 	    
         this.setTitle("Appointment");
