@@ -1,26 +1,48 @@
- drop table RendezVous;
- drop table patient;
- drop table medecin;
+-- 1. Clean up existing tables (important to do it in this order because of constraints)
+DROP TABLE Appointment;
+DROP TABLE Patient;
+DROP TABLE Doctor;
 
- 
- create Table Patient ( Num_Patient number primary key, Nom varchar2(15),prenom varchar2(15), Date_Naissance DATE,  Telephone number, Adresse varchar2(20));
+-- 2. Create Patient Table
+CREATE TABLE Patient (
+    patient_id NUMBER PRIMARY KEY,
+    name VARCHAR2(25),
+    surname VARCHAR2(25),
+    birth_date DATE,
+    phone NUMBER,
+    address VARCHAR2(50)
+);
 
- create Table Medecin ( Num_Medecin number primary key  ,Nom varchar2(15),Prenom varchar2(15) ,Specialite varchar2(20) ,Telephone number);
+-- 3. Create Doctor Table
+CREATE TABLE Doctor (
+    doctor_id NUMBER PRIMARY KEY,
+    name VARCHAR2(25),
+    surname VARCHAR2(25),
+    specialty VARCHAR2(30),
+    phone NUMBER
+);
 
- create Table RendezVous ( Num_RendezVous number primary key ,Date_RendezVous DATE ,Heure_RendezVous timestamp,
- Statut VARCHAR2(20),Num_Patient NUMBER, Num_Medecin NUMBER,
-constraint fk_rendezvous_patient foreign key (Num_Patient) references patient (Num_Patient ),
-constraint fk_rendezvous_medecin foreign key (Num_medecin) references medecin (Num_medecin ),
-CONSTRAINT check_statut CHECK (statut IN ('Planifie', 'Annule', 'Effectue')));
+-- 4. Create Appointment Table
+CREATE TABLE Appointment (
+    appointment_id NUMBER PRIMARY KEY,
+    app_date DATE,
+    app_time TIMESTAMP,
+    status VARCHAR2(20),
+    patient_id NUMBER,
+    doctor_id NUMBER,
+    CONSTRAINT fk_app_patient FOREIGN KEY (patient_id) REFERENCES Patient(patient_id),
+    CONSTRAINT fk_app_doctor FOREIGN KEY (doctor_id) REFERENCES Doctor(doctor_id),
+    CONSTRAINT check_status CHECK (status IN ('Scheduled', 'Cancelled', 'Completed'))
+);
 
-INSERT INTO Patient VALUES (100,'Slimani', 'Ahmed', TO_DATE('2003-05-09', 'YYYY-MM-DD'), 0555040674, 'Kouba');
+-- 5. Insert Sample Data
+INSERT INTO Patient VALUES (100, 'Slimani', 'Ahmed', TO_DATE('2003-05-09', 'YYYY-MM-DD'), 0555040674, 'Kouba');
+INSERT INTO Doctor VALUES (213, 'Hamdi', 'Islem', 'Cardiologist', 0666112233);
+INSERT INTO Appointment VALUES (1900, TO_DATE('2026-02-13', 'YYYY-MM-DD'), TO_TIMESTAMP('2026-02-13 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Scheduled', 100, 213);
 
-INSERT INTO Medecin VALUES (213,'Hamdi', 'Islem' , 'Cardiologue', 0666112233);
+COMMIT;
 
-
-INSERT INTO RendezVous VALUES (1900, TO_DATE('2026-02-13', 'YYYY-MM-DD'), TO_TIMESTAMP('2026-02-13 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Planifie', 100, 213);
-commit;
-
+-- 6. Verify Data
 SELECT * FROM Patient;
-SELECT * FROM Medecin;
-SELECT * FROM RendezVous;
+SELECT * FROM Doctor;
+SELECT * FROM Appointment;
